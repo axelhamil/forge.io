@@ -1,0 +1,22 @@
+{
+  "name": "nextjs-fastify-boilerplate",
+  "private": true,
+  "author": "@axelhamil",
+  "scripts": {
+    "launch-db": "docker-compose up db -d",
+    "build": "turbo build",
+    "dev": "pnpm launch-db && turbo dev",
+    "start": "turbo start",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "turbo": "^1.13.0"
+  },
+  "packageManager": "pnpm@8.9.0",
+  "engines": {
+    "node": ">=18"
+  }
+}
