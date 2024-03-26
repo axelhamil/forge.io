@@ -1,5 +1,4 @@
 import { DomainError } from "../app/DomainError";
-import { IDomainEvent, DomainEvents } from "./DomainEvents";
 import { ID } from "./ID";
 import { ValueObject } from "./ValueObject";
 import { WatchedList } from "./WatchedList";

@@ -1,5 +1,6 @@
 // Core App
 export * from "./app/DomainError";
+export * from "./app/HtmlPresenter";
 export * from "./app/Mapper";
 export * from "./app/UseCase";
 export * from "./app/UseCaseError";

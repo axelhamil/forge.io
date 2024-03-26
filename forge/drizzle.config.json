@@ -1,0 +1,4 @@
+{
+  "out": "./database/migrations",
+  "schema": "./app/infrastructure/repo/models.ts"
+}
