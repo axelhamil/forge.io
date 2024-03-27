@@ -28,7 +28,7 @@ COPY --from=pruner /app/out/full/ .
 RUN turbo build --scope=forge...
 
 RUN pnpm prune --prod --no-optional
-RUN rm -rf ./**/*/src
+#RUN rm -rf ./**/*/src
 
 FROM base AS runner
 

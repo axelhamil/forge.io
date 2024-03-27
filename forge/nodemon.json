@@ -1,0 +1,20 @@
+{
+  "watch": [
+    "app",
+    "config",
+    "public",
+    "resources",
+    "database",
+    "package.json",
+    "tsconfig.json"
+  ],
+  "ext": "js,ts,hbs,html,css",
+  "ignore": [
+    "node_modules",
+    "tests"
+  ],
+  "exec": "ts-node --require tsconfig-paths/register main.ts",
+  "env": {
+      "NODE_ENV": "development"
+  }
+}

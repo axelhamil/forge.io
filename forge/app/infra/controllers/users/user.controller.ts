@@ -2,9 +2,9 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { injectable, registry } from "tsyringe";
 
 import { CreateUserDTO } from "../../../domain/contracts/users.contract";
-import CreateUser from "../../../domain/useCases/createUser";
-import FindAllUsers from "../../../domain/useCases/findAllUsers";
-import HbsPresenter from "../../../views/hbsPresenter";
+import CreateUser from "../../../domain/usecases/createUser";
+import FindAllUsers from "../../../domain/usecases/findAllUsers";
+import HbsPresenter from "../../hbsPresenter";
 import DrizzleUserRepo from "../../repositories/users/drizzleUserRepo";
 
 @injectable()
