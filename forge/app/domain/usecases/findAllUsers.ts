@@ -1,24 +1,18 @@
-import { HtmlView, IHtmlPresenter, UseCase } from "@repo/core-domain";
+import { UseCase } from "@repo/core-domain";
 import { inject, injectable } from "tsyringe";
 
 import { IUserRepo } from "../contracts/users.contract";
-import UserMap from "../mappers/user.map";
+import User from "../entities/user/User";
 
 @injectable()
-class FindAllUsers implements UseCase<void, HtmlView> {
+class FindAllUsers implements UseCase<void, User[]> {
   constructor(
     @inject("IUserRepo")
     private userRepo: IUserRepo,
-    @inject("IHtmlPresenter")
-    private htmlPresenter: IHtmlPresenter,
   ) {}
 
-  public async execute(): Promise<HtmlView> {
-    const users = await this.userRepo.findAll();
-
-    return this.htmlPresenter.render("pages/users", {
-      users: users.map(UserMap.toDTO),
-    });
+  public async execute(): Promise<User[]> {
+    return this.userRepo.findAll();
   }
 }
 

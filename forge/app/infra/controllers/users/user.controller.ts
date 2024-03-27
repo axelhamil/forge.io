@@ -4,17 +4,11 @@ import { injectable, registry } from "tsyringe";
 import { CreateUserDTO } from "../../../domain/contracts/users.contract";
 import CreateUser from "../../../domain/usecases/createUser";
 import FindAllUsers from "../../../domain/usecases/findAllUsers";
-import HbsPresenter from "../../hbsPresenter";
+import AllUsersPresenter from "../../presenters/allUsersPresenter";
 import DrizzleUserRepo from "../../repositories/users/drizzleUserRepo";
 
 @injectable()
-@registry([
-  { token: "IUserRepo", useClass: DrizzleUserRepo },
-  {
-    token: "IHtmlPresenter",
-    useClass: HbsPresenter,
-  },
-])
+@registry([{ token: "IUserRepo", useClass: DrizzleUserRepo }])
 class UserController {
   constructor(
     private readonly createUserUseCase: CreateUser,
@@ -44,10 +38,11 @@ class UserController {
   public async findAllUsers(
     _req: FastifyRequest,
     reply: FastifyReply,
-  ): Promise<FastifyReply> {
+  ): Promise<void> {
     const result = await this.findAllUsersUseCase.execute();
+    const presenter = new AllUsersPresenter(reply);
 
-    return reply.view(result.template, result.data);
+    return presenter.render(result);
   }
 }
 
