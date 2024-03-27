@@ -1,11 +1,9 @@
-interface IHtmlPresenter<T = Record<string, unknown>> {
-  render(template: string, data: T): Promise<HtmlView>;
+export abstract class HtmlPresenter<T, R> {
+  protected compile: R;
+
+  protected constructor(compile: R) {
+    this.compile = compile;
+  }
+
+  public abstract render(data: T): Promise<void>;
 }
-
-type HtmlView = {
-  template: string;
-  data: Record<string, unknown>;
-  path: string;
-};
-
-export type { HtmlView, IHtmlPresenter };

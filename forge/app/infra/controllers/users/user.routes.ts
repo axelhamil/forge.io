@@ -1,8 +1,8 @@
+import { createUserDTOSchema } from "@app/domain/contracts/users.contract";
 import { FastifyInstance } from "fastify";
 import { buildJsonSchemas } from "fastify-zod";
 import { container } from "tsyringe";
 
-import { createUserDTOSchema } from "../../../domain/contracts/users.contract";
 import UserController from "./user.controller";
 
 const { schemas: userSchemas, $ref } = buildJsonSchemas(

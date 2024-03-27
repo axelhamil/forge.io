@@ -1,11 +1,10 @@
+import { CreateUserDTO } from "@app/domain/contracts/users.contract";
+import CreateUser from "@app/domain/usecases/createUser";
+import FindAllUsers from "@app/domain/usecases/findAllUsers";
+import AllUsersPresenter from "@app/infra/presenters/allUsersPresenter";
+import DrizzleUserRepo from "@app/infra/repositories/users/drizzleUserRepo";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { injectable, registry } from "tsyringe";
-
-import { CreateUserDTO } from "../../../domain/contracts/users.contract";
-import CreateUser from "../../../domain/usecases/createUser";
-import FindAllUsers from "../../../domain/usecases/findAllUsers";
-import AllUsersPresenter from "../../presenters/allUsersPresenter";
-import DrizzleUserRepo from "../../repositories/users/drizzleUserRepo";
 
 @injectable()
 @registry([{ token: "IUserRepo", useClass: DrizzleUserRepo }])

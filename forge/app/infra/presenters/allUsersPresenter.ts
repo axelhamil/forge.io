@@ -1,8 +1,7 @@
+import User from "@app/domain/entities/user/User";
+import UserMap from "@app/domain/mappers/user.map";
+import { HtmlPresenter } from "@repo/core-domain";
 import { FastifyReply } from "fastify";
-
-import HtmlPresenter from "../../domain/contracts/html.presenter";
-import User from "../../domain/entities/user/User";
-import UserMap from "../../domain/mappers/user.map";
 
 type ViewEngine = FastifyReply;
 

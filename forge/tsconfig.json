@@ -5,11 +5,10 @@
     "rootDir": ".",
     "outDir": "dist",
     "paths": {
-      "@modules/*": ["./modules/*"],
+      "@app/domain/*": ["./app/domain/*"],
+      "@app/infra/*": ["./app/infra/*"],
       "@config/*": ["./config/*"],
-      "@router/*": ["./router/*"],
-      "@utils/*": ["./utils/*"],
-      "@db/*": ["./db/*"]
+      "@utils/*": ["./utils/*"]
     }
   },
   "include": ["**/*.ts", "**/*.hbs"],

@@ -1,9 +1,9 @@
-import { Email, ID, Mapper, Password } from "@repo/core-domain";
-
 import {
   UserInsert,
   UserSelect,
-} from "../../infra/repositories/users/drizzleUserRepo";
+} from "@app/infra/repositories/users/drizzleUserRepo";
+import { Email, ID, Mapper, Password } from "@repo/core-domain";
+
 import { UserDTO } from "../contracts/users.contract";
 import User from "../entities/user/User";
 

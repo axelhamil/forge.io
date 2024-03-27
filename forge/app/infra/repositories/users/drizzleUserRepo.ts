@@ -1,13 +1,12 @@
+import { IUserRepo } from "@app/domain/contracts/users.contract";
+import User from "@app/domain/entities/user/User";
+import UserId from "@app/domain/entities/user/UserId";
+import UserMap from "@app/domain/mappers/user.map";
 import { db } from "@config/orm";
 import { Email } from "@repo/core-domain";
 import HooksManager from "@utils/hooksManager";
 import { eq } from "drizzle-orm";
 import { pgTable, text, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
-
-import { IUserRepo } from "../../../domain/contracts/users.contract";
-import User from "../../../domain/entities/user/User";
-import UserId from "../../../domain/entities/user/UserId";
-import UserMap from "../../../domain/mappers/user.map";
 
 export const users = pgTable("users", {
   createdAt: timestamp("created_at").defaultNow(),

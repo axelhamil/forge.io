@@ -1,11 +1,10 @@
+import * as schema from "@app/infra/repositories";
 import env from "@config/env";
 import Logger from "@utils/logger";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { migrate } from "drizzle-orm/node-postgres/migrator";
 import path from "path";
 import { Pool } from "pg";
-
-import * as schema from "../app/infra/repositories";
 
 let db: ReturnType<typeof drizzle<typeof schema>>;
 

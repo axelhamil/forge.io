@@ -1,3 +1,6 @@
+import { userSchemas } from "@app/infra/controllers/users/user.routes";
+import apiRouter from "@app/infra/router/api.router";
+import pagesRouter from "@app/infra/router/pages.routes";
 import env, { Env } from "@config/env";
 import { initDb } from "@config/orm";
 import cors from "@fastify/cors";
@@ -11,10 +14,6 @@ import { PinoLoggerOptions } from "fastify/types/logger";
 import fs from "fs";
 import handlebars from "handlebars";
 import path from "path";
-
-import { userSchemas } from "../app/infra/controllers/users/user.routes";
-import apiRouter from "../app/infra/router/api.router";
-import pagesRouter from "../app/infra/router/pages.routes";
 
 const envToLogger: Record<Env["NODE_ENV"], PinoLoggerOptions | boolean> = {
   development: {
