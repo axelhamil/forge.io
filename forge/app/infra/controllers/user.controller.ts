@@ -1,13 +1,13 @@
 import { CreateUserDTO } from "@app/domain/contracts/users.contract";
+import AllUsersPresenter from "@app/domain/handlers/presenters/AllUsers.presenter";
 import CreateUser from "@app/domain/usecases/createUser";
 import FindAllUsers from "@app/domain/usecases/findAllUsers";
-import AllUsersPresenter from "@app/infra/presenters/allUsersPresenter";
-import DrizzleUserRepo from "@app/infra/repositories/users/drizzleUserRepo";
+import UserRepoDrizzle from "@app/infra/repositories/userRepo.drizzle";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { injectable, registry } from "tsyringe";
 
 @injectable()
-@registry([{ token: "IUserRepo", useClass: DrizzleUserRepo }])
+@registry([{ token: "IUserRepo", useClass: UserRepoDrizzle }])
 class UserController {
   constructor(
     private readonly createUserUseCase: CreateUser,

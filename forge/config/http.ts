@@ -1,8 +1,6 @@
-import { userSchemas } from "@app/infra/controllers/users/user.routes";
-import apiRouter from "@app/infra/router/api.router";
-import pagesRouter from "@app/infra/router/pages.routes";
 import env, { Env } from "@config/env";
 import { initDb } from "@config/orm";
+import autoLoad from "@fastify/autoload";
 import cors from "@fastify/cors";
 import formBody from "@fastify/formbody";
 import helmet from "@fastify/helmet";
@@ -14,6 +12,8 @@ import { PinoLoggerOptions } from "fastify/types/logger";
 import fs from "fs";
 import handlebars from "handlebars";
 import path from "path";
+
+import { userSchemas } from "../router/api/v1/users";
 
 const envToLogger: Record<Env["NODE_ENV"], PinoLoggerOptions | boolean> = {
   development: {
@@ -56,7 +56,7 @@ server.register(view, {
     handlebars,
   },
   layout: "layouts/main",
-  root: path.join(__dirname, "../app/views"),
+  root: path.join(__dirname, "../resources"),
 });
 
 server.register(fastifyStatic, {
@@ -68,9 +68,6 @@ server.register(formBody);
 for (const schema of [...userSchemas]) {
   server.addSchema(schema);
 }
-
-server.register(pagesRouter);
-server.register(apiRouter, { prefix: "/api/v1" });
 
 const routes = [] as {
   method: string;
@@ -100,17 +97,21 @@ handlebars.registerHelper("route", (route: string): string => {
   return routeFound.url;
 });
 
-const partials = fs.readdirSync(path.join(__dirname, "../app/views/partials"));
+const partials = fs.readdirSync(path.join(__dirname, "../resources/partials"));
 
 for (const partial of partials) {
   const partialName = partial.split(".")[0];
   const partialContent = fs.readFileSync(
-    path.join(__dirname, `../app/views/partials/${partial}`),
+    path.join(__dirname, `../resources/partials/${partial}`),
     "utf-8",
   );
 
   handlebars.registerPartial(partialName, partialContent);
 }
+
+server.register(autoLoad, {
+  dir: path.join(__dirname, "../router"),
+});
 
 const startServer = async (): Promise<void> => {
   try {

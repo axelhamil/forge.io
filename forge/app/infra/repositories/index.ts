@@ -1,1 +1,1 @@
-export { users } from "./users/drizzleUserRepo";
+export { users } from "./userRepo.drizzle";

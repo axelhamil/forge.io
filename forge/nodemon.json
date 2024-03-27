@@ -6,7 +6,8 @@
     "resources",
     "database",
     "package.json",
-    "tsconfig.json"
+    "tsconfig.json",
+    "main.ts"
   ],
   "ext": "js,ts,hbs,html,css",
   "ignore": [

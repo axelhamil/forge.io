@@ -1,8 +1,8 @@
 import { DomainEvents, IHandle, UseCase } from "@repo/core-domain";
 
-import UserCreated from "../entities/user/events/userCreated.event";
+import UserCreated from "../../entities/user/events/userCreated.event";
 
-class AfterUserCreated implements IHandle {
+class AfterUserCreatedHandler implements IHandle {
   private useCase: any;
 
   constructor(useCase: UseCase<any, any>) {
@@ -29,4 +29,4 @@ class AfterUserCreated implements IHandle {
   }
 }
 
-export default AfterUserCreated;
+export default AfterUserCreatedHandler;

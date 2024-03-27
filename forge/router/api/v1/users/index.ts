@@ -1,9 +1,8 @@
 import { createUserDTOSchema } from "@app/domain/contracts/users.contract";
-import { FastifyInstance } from "fastify";
+import UserController from "@app/infra/controllers/user.controller";
+import { FastifyPluginAsync } from "fastify";
 import { buildJsonSchemas } from "fastify-zod";
 import { container } from "tsyringe";
-
-import UserController from "./user.controller";
 
 const { schemas: userSchemas, $ref } = buildJsonSchemas(
   {
@@ -12,7 +11,8 @@ const { schemas: userSchemas, $ref } = buildJsonSchemas(
   { $id: "user" },
 );
 
-const userRoutes = async (fastify: FastifyInstance): Promise<void> => {
+const usersRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
+  fastify.get("/", async (_request, reply) => reply.send("OK_Users"));
   fastify.post(
     "/",
     {
@@ -28,4 +28,4 @@ const userRoutes = async (fastify: FastifyInstance): Promise<void> => {
 };
 
 export { userSchemas };
-export default userRoutes;
+export default usersRoutes;

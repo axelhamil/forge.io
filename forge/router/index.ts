@@ -1,9 +1,8 @@
-import { FastifyInstance } from "fastify";
+import UserController from "@app/infra/controllers/user.controller";
+import { FastifyPluginAsync } from "fastify";
 import { container } from "tsyringe";
 
-import UserController from "../controllers/users/user.controller";
-
-const pagesRouter = async (fastify: FastifyInstance): Promise<void> => {
+const homeRouter: FastifyPluginAsync = async (fastify): Promise<void> => {
   fastify.get(
     "/",
     {
@@ -42,4 +41,4 @@ const pagesRouter = async (fastify: FastifyInstance): Promise<void> => {
   );
 };
 
-export default pagesRouter;
+export default homeRouter;

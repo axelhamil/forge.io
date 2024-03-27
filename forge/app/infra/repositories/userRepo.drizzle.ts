@@ -19,7 +19,7 @@ export const users = pgTable("users", {
 export type UserSelect = typeof users.$inferSelect;
 export type UserInsert = typeof users.$inferInsert;
 
-class DrizzleUserRepo implements IUserRepo {
+class UserRepoDrizzle implements IUserRepo {
   public async findAll(): Promise<User[]> {
     const rawUsers = await db
       .select({
@@ -86,4 +86,4 @@ class DrizzleUserRepo implements IUserRepo {
   }
 }
 
-export default DrizzleUserRepo;
+export default UserRepoDrizzle;

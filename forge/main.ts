@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import "@app/domain/handlers";
-import "@app/infra/repositories/hooks";
+import "@config/hooks";
 
 import startServer from "@config/http";
 

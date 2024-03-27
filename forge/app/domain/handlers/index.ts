@@ -1,10 +1,10 @@
 import Logger from "@utils/logger";
 
-import AfterUserCreated from "./afterUserCreated";
+import AfterUserCreatedHandler from "./events/AfterUserCreated.handler";
 
 (async function registerSubscriptions(): Promise<void> {
   try {
-    new AfterUserCreated({
+    new AfterUserCreatedHandler({
       execute: async () =>
         new Promise<void>((resolve) => {
           setTimeout(() => {
