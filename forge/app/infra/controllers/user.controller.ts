@@ -7,7 +7,6 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { injectable, registry } from "tsyringe";
 
 @injectable()
-@registry([{ token: "IUserRepo", useClass: UserRepoDrizzle }])
 class UserController {
   constructor(
     private readonly createUserUseCase: CreateUser,

@@ -7,6 +7,7 @@ import { Email } from "@repo/core-domain";
 import HooksManager from "@utils/hooksManager";
 import { eq } from "drizzle-orm";
 import { pgTable, text, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
+import { registry, singleton } from "tsyringe";
 
 export const users = pgTable("users", {
   createdAt: timestamp("created_at").defaultNow(),
@@ -19,6 +20,8 @@ export const users = pgTable("users", {
 export type UserSelect = typeof users.$inferSelect;
 export type UserInsert = typeof users.$inferInsert;
 
+@singleton()
+@registry([{ token: "IUserRepo", useClass: UserRepoDrizzle }])
 class UserRepoDrizzle implements IUserRepo {
   public async findAll(): Promise<User[]> {
     const rawUsers = await db

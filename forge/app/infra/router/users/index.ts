@@ -12,7 +12,17 @@ const { schemas: userSchemas, $ref } = buildJsonSchemas(
 );
 
 const usersRoutes: FastifyPluginAsync = async (fastify): Promise<void> => {
-  fastify.get("/", async (_request, reply) => reply.send("OK_Users"));
+  fastify.get(
+    "/",
+    {
+      schema: {
+        summary: "users",
+        tags: ["PAGES"],
+      },
+    },
+    (request, reply) =>
+      container.resolve(UserController).findAllUsers(request, reply),
+  );
   fastify.post(
     "/",
     {
