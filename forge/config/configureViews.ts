@@ -2,6 +2,7 @@ import fs from "fs";
 import handlebars from "handlebars";
 import path from "path";
 
+import { __dirname } from "../main";
 import { Route } from "./configureRoutes";
 
 const configureViews = (routes: Route[]): void => {
@@ -14,13 +15,13 @@ const configureViews = (routes: Route[]): void => {
   });
 
   const partials = fs.readdirSync(
-    path.join(__dirname, "../resources/partials"),
+    path.join(__dirname, "resources/partials"),
   );
 
   for (const partial of partials) {
     const partialName = partial.split(".")[0];
     const partialContent = fs.readFileSync(
-      path.join(__dirname, `../resources/partials/${partial}`),
+      path.join(__dirname, `resources/partials/${partial}`),
       "utf-8",
     );
 

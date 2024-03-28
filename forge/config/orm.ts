@@ -4,7 +4,10 @@ import Logger from "@utils/logger";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { migrate } from "drizzle-orm/node-postgres/migrator";
 import path from "path";
-import { Pool } from "pg";
+import pg from "pg";
+const { Pool } = pg;
+
+import { __dirname } from "../main";
 
 let db: ReturnType<typeof drizzle<typeof schema>>;
 
@@ -30,7 +33,7 @@ async function initDb(): Promise<void> {
   });
 
   await migrate(db, {
-    migrationsFolder: path.resolve(__dirname, "../database/migrations"),
+    migrationsFolder: path.resolve(__dirname, "database/migrations"),
   })
     .then(() => {
       Logger.log("[DATABASE]: Database migrated 🎉");

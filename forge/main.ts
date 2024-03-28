@@ -8,6 +8,10 @@ import { initDb } from "@config/orm";
 import autoLoad from "@fastify/autoload";
 import Logger from "@utils/logger";
 import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+export const __dirname = path.dirname(__filename);
 
 export const app = configureServer(env);
 

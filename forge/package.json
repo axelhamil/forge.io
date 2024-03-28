@@ -2,11 +2,12 @@
   "name": "forge",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "prebuild": "rimraf dist",
     "postbuild": "copyfiles app/**/*.hbs public/**/*.css dist/ && cp -r database dist/",
     "build": "pnpm prebuild && tsc && tsc-alias && pnpm postbuild",
-    "dev": "nodemon",
+    "dev": "tsx watch --tsconfig tsconfig.json main.ts .env ",
     "start": "node -r ts-node/register/transpile-only -r tsconfig-paths/register dist/main.js",
     "migrate": "drizzle-kit generate:pg",
     "lint": "eslint . --fix"
@@ -40,6 +41,7 @@
     "handlebars": "^4.7.8",
     "pg": "^8.11.3",
     "reflect-metadata": "^0.2.1",
+    "tsx": "^4.7.1",
     "tsyringe": "^4.8.0",
     "zod": "^3.22.4"
   }

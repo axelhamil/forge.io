@@ -1,7 +1,7 @@
 import { Email, Password, UseCase, UseCaseError } from "@repo/core-domain";
 import { inject, injectable } from "tsyringe";
 
-import { CreateUserDTO, IUserRepo } from "../contracts/users.contract";
+import type { CreateUserDTO, IUserRepo } from "../contracts/users.contract";
 import User from "../entities/user/User";
 
 @injectable()

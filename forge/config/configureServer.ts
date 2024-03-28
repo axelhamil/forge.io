@@ -1,3 +1,4 @@
+import { userSchemas } from "@app/infra/router/users";
 import { Env } from "@config/env";
 import cors from "@fastify/cors";
 import formBody from "@fastify/formbody";
@@ -8,8 +9,7 @@ import Fastify from "fastify";
 import { PinoLoggerOptions } from "fastify/types/logger";
 import handlebars from "handlebars";
 import path from "path";
-
-import { userSchemas } from "@app/infra/router/users";
+import {__dirname} from "../main";
 
 const envToLogger: Record<Env["NODE_ENV"], PinoLoggerOptions | boolean> = {
   development: {
@@ -51,10 +51,10 @@ const configureServer = (env: Env) => {
       handlebars,
     },
     layout: "layouts/main",
-    root: path.join(__dirname, "../resources"),
+    root: path.join(__dirname, "resources"),
   });
   server.register(fastifyStatic, {
-    root: path.join(__dirname, "../public"),
+    root: path.join(__dirname, "public"),
   });
 
   server.register(formBody);

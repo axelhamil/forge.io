@@ -57,7 +57,7 @@ class UserRepoDrizzle implements IUserRepo {
   public async exists(arg: UserId | Email): Promise<boolean> {
     const user: UserSelect = await db.query.users.findFirst({
       where: (users, { eq }) => {
-        if (arg instanceof Email) {
+        if (arg.constructor.name === "Email") {
           return eq(users.email, arg.value);
         } else return eq(users.id, arg.value);
       },
@@ -70,20 +70,20 @@ class UserRepoDrizzle implements IUserRepo {
     const userInsert = await UserMap.toPersistence(user);
     const exists = await this.exists(user.get("email"));
 
-    try {
-      if (!exists) {
+    if (!exists) {
+      try {
         await db.insert(users).values(userInsert);
         await HooksManager.processHooks("afterUserCreated", user.get("id"));
-      } else {
-        await db
-          .update(users)
-          .set(userInsert)
-          .where(eq(users.id, user.get("id").value));
-      }
-    } catch (error) {
-      await db.delete(users).where(eq(users.id, user.get("id").value));
+      } catch (error) {
+        await db.delete(users).where(eq(users.id, user.get("id").value));
 
-      throw new Error(error.toString());
+        throw new Error(error.toString());
+      }
+    } else {
+      await db
+        .update(users)
+        .set(userInsert)
+        .where(eq(users.id, user.get("id").value));
     }
     return user;
   }
