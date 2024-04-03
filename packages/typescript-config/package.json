@@ -5,14 +5,5 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public"
-  },
-  "files": [
-    "base.json",
-    "node.json",
-    "nextjs.json",
-    "react-library.json"
-  ],
-  "devDependencies": {
-    "typescript": "^5.4.3"
   }
 }

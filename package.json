@@ -1,19 +1,17 @@
 {
-  "name": "nextjs-fastify-boilerplate",
+  "name": "forge.io",
   "private": true,
-  "author": "@axelhamil",
   "scripts": {
-    "launch-db": "docker-compose up db -d",
     "build": "turbo build",
-    "dev": "pnpm launch-db && turbo dev",
-    "start": "turbo start",
+    "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "turbo": "^1.13.0"
+    "prettier": "^3.2.5",
+    "turbo": "latest"
   },
   "packageManager": "pnpm@8.9.0",
   "engines": {

@@ -1,56 +1,81 @@
-# Forge - The One and Only SaaS Boilerplate You Need
+# Turborepo starter
 
-Forge is the ultimate boilerplate for building scalable and maintainable SaaS 
-applications with ease. Based on Clean Architecture and DDD principles, Forge is
-the perfect starting point for your next project.
+This is an official starter Turborepo.
 
-## Features
+## Using this example
 
-- Clean Architecture & Domain-Driven Design
-- TypeScript for strong typing and improved code quality
-- Fastify for high-performance web framework
-- DrizzleORM for easy database management
-- Postgres for reliable and scalable data storage
-- Docker for simplified deployment and development
-- Eslint for consistent code style
-- HBS for easy templating
+Run the following command:
 
-### Coming Soon
-
-#### Priority:
-- **Unpoly** for seamless client-side navigation 
-- **TailwindCSS** for beautiful and responsive design
-- **DaisyUI** for easy and customizable components
----
-#### Secondary:
-- Jest for comprehensive testing
-- Stripe Integration for easy payments
-- Mailgun Integration for email management
-- Auth with IdentityPlatform for secure user authentication
-- Admin Panel for managing your application
-- Landing Page to showcase your product
-- Documentation to help you get started
-
-## Getting Started
-
-Install Forge using the following command:
-```bash
-pnpm install
+```sh
+npx create-turbo@latest
 ```
-Start the development server:
-```bash
+
+## What's inside?
+
+This Turborepo includes the following packages/apps:
+
+### Apps and Packages
+
+- `docs`: a [Next.js](https://nextjs.org/) app
+- `web`: another [Next.js](https://nextjs.org/) app
+- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
+- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+
+### Utilities
+
+This Turborepo has some additional tools already setup for you:
+
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
+
+### Build
+
+To build all apps and packages, run the following command:
+
+```
+cd my-turborepo
+pnpm build
+```
+
+### Develop
+
+To develop all apps and packages, run the following command:
+
+```
+cd my-turborepo
 pnpm dev
 ```
-Or use Docker:
-```bash
-docker-compose up forge --build --force-recreate -V
+
+### Remote Caching
+
+Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+
 ```
-Start the production server:
-```bash
-pnpm build
-pnpm start
+cd my-turborepo
+npx turbo login
 ```
-Or use Docker:
-```bash
-docker-compose up forge --target runner --build --force-recreate -V
+
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+
 ```
+npx turbo link
+```
+
+## Useful Links
+
+Learn more about the power of Turborepo:
+
+- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
+- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
+- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
+- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
+- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
+- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
