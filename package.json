@@ -2,8 +2,9 @@
   "name": "forge.io",
   "private": true,
   "scripts": {
+    "start:db": "docker-compose up db -d",
     "build": "turbo build",
-    "dev": "turbo dev",
+    "dev": "pnpm start:db && turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },

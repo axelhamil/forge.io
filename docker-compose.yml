@@ -1,0 +1,55 @@
+version: "3.9"
+
+networks:
+  default:
+    name: workspace
+    driver: bridge
+
+services:
+
+  db:
+    networks:
+      - default
+    image: postgres:15-alpine
+    hostname: postgres
+    container_name: db
+    volumes:
+      - db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+
+  forge:
+    init: true
+    tty: true
+    networks:
+      - default
+    build:
+      context: .
+      dockerfile: ./forge/Dockerfile
+      target: dev
+      args:
+        NODE_ENV: development
+        PORT: 5050
+    env_file:
+      - ./forge/.env.local
+    image: forge:development
+    container_name: forge-development
+    ports:
+      - "5050:5050"
+    environment:
+      - HOST=0.0.0.0
+      - NODE_ENV=development
+      - DATABASE_URL=postgres://user:password@db:5432/postgres
+    volumes:
+      - ./forge:/app/forge
+      - /app/forge/node_modules
+      - /app/node_modules
+    depends_on:
+      - db
+
+volumes:
+  db:
