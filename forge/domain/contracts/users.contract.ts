@@ -1,8 +1,8 @@
 import { Email } from "@repo/core-domain";
 import { z } from "zod";
 
-import User from "../entities/User";
-import UserId from "../entities/UserId";
+import User from "../entities/user/User";
+import UserId from "../entities/user/UserId";
 
 const createUserDTOSchema = z.object({
   email: z.string().email(),

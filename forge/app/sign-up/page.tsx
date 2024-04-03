@@ -10,12 +10,14 @@ function Page(): ReactElement {
           placeholder="Email"
           type="email"
           name="email"
+          autoComplete="email"
           className={"input input-bordered w-full max-w-xs"}
         />
         <input
           placeholder="Password"
           type="password"
           name="password"
+          autoComplete="current-password"
           className={"input input-bordered w-full max-w-xs"}
         />
         <input type="submit" value="Submit" className="btn" />

@@ -1,7 +1,7 @@
 import { Email, Password, UseCase, UseCaseError } from "@repo/core-domain";
 
 import type { CreateUserDTO, UserRepo } from "../contracts/users.contract";
-import User from "../entities/User";
+import User from "../entities/user/User";
 
 export default class CreateUserUseCase
   implements UseCase<CreateUserDTO, Promise<"OK">>

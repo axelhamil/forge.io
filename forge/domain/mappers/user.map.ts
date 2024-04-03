@@ -2,7 +2,7 @@ import { Email, ID, Mapper, Password } from "@repo/core-domain";
 
 import { UserInsert, UserSelect } from "../../database/schemas";
 import { UserDTO } from "../contracts/users.contract";
-import User from "../entities/User";
+import User from "../entities/user/User";
 
 class UserMap
   implements Mapper<User, UserDTO, UserSelect, Promise<UserInsert>>

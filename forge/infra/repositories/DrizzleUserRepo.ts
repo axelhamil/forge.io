@@ -4,8 +4,8 @@ import { eq } from "drizzle-orm";
 import db from "../../database";
 import { users, UserSelect } from "../../database/schemas";
 import { UserRepo } from "../../domain/contracts/users.contract";
-import User from "../../domain/entities/User";
-import UserId from "../../domain/entities/UserId";
+import User from "../../domain/entities/user/User";
+import UserId from "../../domain/entities/user/UserId";
 import UserMap from "../../domain/mappers/user.map";
 
 export default class DrizzleUserRepo extends UserRepo {

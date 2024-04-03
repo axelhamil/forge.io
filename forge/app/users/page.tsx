@@ -14,8 +14,8 @@ async function Page(): Promise<ReactElement> {
 
   return (
     <div>
+      <h1>Users</h1>
       <Suspense fallback={<div>Loading...</div>}>
-        <h1>Users</h1>
         <ul>
           {users.map((user) => (
             <li key={user.id}>{user.email}</li>

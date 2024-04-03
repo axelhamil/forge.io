@@ -1,5 +1,4 @@
 "use server";
-
 import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -15,10 +14,9 @@ export default async function createUserAction(
       password: formData.get("password"),
     });
     await createUserUseCase.execute(dto);
-
-    revalidateTag("users");
-    redirect("/users/");
   } catch (error) {
     console.error(error);
   }
+  revalidateTag("users");
+  redirect("/users/");
 }
