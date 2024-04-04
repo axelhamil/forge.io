@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint . --fix",
     "migrate": "pnpx tsx --tsconfig ./tsconfig.json scripts/migrate.ts",
-    "generate:migration": "drizzle-kit generate:pg"
+    "generate:migration": "drizzle-kit generate:pg",
+    "studio": "drizzle-kit studio --port 3030"
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.10",
