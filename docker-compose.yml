@@ -39,7 +39,7 @@ services:
     image: forge:development
     container_name: forge-development
     ports:
-      - "5050:5050"
+      - "3000:3000"
     environment:
       - HOST=0.0.0.0
       - NODE_ENV=development

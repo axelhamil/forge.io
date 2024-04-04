@@ -26,6 +26,9 @@ importers:
       '@repo/core-domain':
         specifier: workspace:*
         version: link:../packages/core-domain
+      bcrypt:
+        specifier: ^5.1.1
+        version: 5.1.1
       clsx:
         specifier: ^2.1.0
         version: 2.1.0
@@ -84,6 +87,9 @@ importers:
       tailwindcss:
         specifier: ^3.4.3
         version: 3.4.3
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
 
   packages/core-domain:
     dependencies:
