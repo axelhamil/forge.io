@@ -1,43 +1,43 @@
-const { resolve } = require("node:path");
-
-const project = resolve(process.cwd(), "tsconfig.json");
-
-/** @type {import("eslint").Linter.Config} */
 module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+    jest: true,
+  },
   extends: [
     "eslint:recommended",
-    "prettier",
-    "eslint-config-turbo",
     "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
+    "next/core-web-vitals",
+    "turbo",
   ],
-  plugins: ["only-warn", "simple-import-sort", "sort-keys-fix", "unused-imports", "drizzle"],
-  globals: {
-    React: true,
-    JSX: true,
-  },
-  env: {
-    node: true,
-  },
-  settings: {
-    "import/resolver": {
-      typescript: {
-        project,
-      },
-    },
-  },
   ignorePatterns: [
-    // Ignore dotfiles
-    ".*.js",
-    "node_modules/",
-    "dist/",
+    ".eslintrc.js",
+    "**/.next/**",
+    "**/build/**",
+    "**/dist/**",
+    "**/node_modules/**",
   ],
   overrides: [
     {
-      files: ["*.js?(x)", "*.ts?(x)"],
+      env: {
+        node: true,
+      },
+      files: [".eslintrc.{js,cjs}"],
+      parserOptions: {
+        sourceType: "script",
+      },
     },
   ],
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    ecmaVersion: "latest",
+    project: "./tsconfig.json",
+    sourceType: "module",
+  },
+  plugins: ["simple-import-sort", "sort-keys-fix", "unused-imports"],
   rules: {
     "@typescript-eslint/consistent-type-assertions": 1,
     "@typescript-eslint/explicit-function-return-type": 1,
@@ -45,7 +45,6 @@ module.exports = {
     "@typescript-eslint/no-use-before-define": "warn",
     "@typescript-eslint/prefer-optional-chain": 1,
     "comma-spacing": ["error", { after: true, before: false }],
-    "turbo/no-undeclared-env-vars": 0,
     eqeqeq: 1,
     "object-curly-spacing": ["error", "always"],
     "prettier/prettier": [
@@ -80,5 +79,5 @@ module.exports = {
     ],
     "sort-keys-fix/sort-keys-fix": 1,
     "unused-imports/no-unused-imports": 2,
-  }
+  },
 };

@@ -7,6 +7,7 @@ import { Inter } from "next/font/google";
 import { ReactElement, ReactNode } from "react";
 
 import SideBar from "../components/SideBar";
+import { Providers } from "./provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +22,12 @@ export default function RootLayout({
   children: ReactNode;
 }): ReactElement {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={inter.className}>
-        <SideBar />
-        <main className={"pt-10"}>{children}</main>
+        <Providers>
+          <SideBar />
+          <main className={"pt-10"}>{children}</main>
+        </Providers>
       </body>
     </html>
   );

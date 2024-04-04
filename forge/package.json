@@ -6,22 +6,24 @@
     "dev": "pnpm migrate && next dev",
     "build": "next build",
     "start": "next start",
-    "lint:fix": "eslint . --fix",
+    "lint": "eslint . --fix",
     "migrate": "pnpx tsx --tsconfig ./tsconfig.json scripts/migrate.ts",
     "generate:migration": "drizzle-kit generate:pg"
   },
   "dependencies": {
+    "@nextui-org/react": "^2.2.10",
     "@repo/core-domain": "workspace:*",
+    "bcrypt": "^5.1.1",
     "clsx": "^2.1.0",
     "drizzle-kit": "^0.20.14",
     "drizzle-orm": "^0.30.7",
+    "framer-motion": "^11.0.24",
     "next": "^14.1.4",
     "pg": "^8.11.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^2.2.2",
-    "zod": "^3.22.4",
-    "bcrypt": "^5.1.1"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
@@ -31,7 +33,6 @@
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.23",
     "autoprefixer": "^10.4.19",
-    "daisyui": "^4.9.0",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.3.3"
