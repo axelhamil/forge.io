@@ -21,7 +21,15 @@ module.exports = {
   env: {
     node: true,
     browser: true,
+    es2021: true,
+    jest: true,
   },
+  parserOptions: {
+    ecmaVersion: "latest",
+    project: "./tsconfig.json",
+    sourceType: "module",
+  },
+  parser: "@typescript-eslint/parser",
   plugins: ["only-warn", "simple-import-sort", "sort-keys-fix", "unused-imports", "drizzle"],
   settings: {
     "import/resolver": {
@@ -31,11 +39,23 @@ module.exports = {
     },
   },
   ignorePatterns: [
-    // Ignore dotfiles
-    ".*.js",
-    "node_modules/",
+    ".eslintrc.js",
+    "**/.next/**",
+    "**/build/**",
+    "**/dist/**",
+    "**/node_modules/**",
   ],
-  overrides: [{ files: ["*.js?(x)", "*.ts?(x)"] }],
+  overrides: [
+    {
+      env: {
+        node: true,
+      },
+      files: [".eslintrc.{js,cjs}"],
+      parserOptions: {
+        sourceType: "script",
+      },
+    },
+  ],
   rules: {
     "@typescript-eslint/consistent-type-assertions": 1,
     "@typescript-eslint/explicit-function-return-type": 1,

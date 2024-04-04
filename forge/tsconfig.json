@@ -13,9 +13,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "database/index.js",
-    "script/migrate.js",
-    "tailwind.config.js"
   ],
   "exclude": ["node_modules"]
 }
