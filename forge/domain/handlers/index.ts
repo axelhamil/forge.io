@@ -1,6 +1,6 @@
 import AfterUserCreatedHandler from "./AfterUserCreated.handler";
 
-(async function registerSubscriptions(): Promise<void> {
+(function registerSubscriptions(): void {
   try {
     new AfterUserCreatedHandler({
       execute: async () =>

@@ -71,7 +71,9 @@ export abstract class WatchedList<T> {
   }
 
   public addItems(items: T[]): void {
-    items.forEach((item) => this.add(item));
+    items.forEach((item) => {
+      this.add(item);
+    });
   }
 
   public add(item: T): void {
@@ -104,6 +106,7 @@ export abstract class WatchedList<T> {
   mapToObject(): unknown[] {
     return this.currentItems.map((item) => {
       if (item instanceof ValueObject || item instanceof ID) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
         return item.value;
       } else if (item instanceof Entity) {
         return item.toObject();

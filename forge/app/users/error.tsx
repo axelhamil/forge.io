@@ -1,5 +1,5 @@
 "use client";
-import { ReactElement, useEffect } from "react";
+import { type ReactElement, useEffect } from "react";
 
 function Error({
   error,
@@ -15,7 +15,13 @@ function Error({
   return (
     <div>
       <h2>Something went wrong!</h2>
-      <button onClick={() => reset()}>Try again</button>
+      <button
+        onClick={() => {
+          reset();
+        }}
+      >
+        Try again
+      </button>
       <p>{error.message}</p>
     </div>
   );

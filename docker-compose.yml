@@ -33,7 +33,7 @@ services:
       target: dev
       args:
         NODE_ENV: development
-        PORT: 5050
+        PORT: 3000
     env_file:
       - ./forge/.env.local
     image: forge:development

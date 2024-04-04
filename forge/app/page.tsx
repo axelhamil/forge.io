@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { type ReactElement } from "react";
 
 function Page(): ReactElement {
   return <div>Home</div>;

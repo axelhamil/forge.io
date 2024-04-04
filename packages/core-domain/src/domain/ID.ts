@@ -1,4 +1,4 @@
-import { randomUUID } from "crypto";
+import { randomUUID } from "node:crypto";
 
 export class ID<T extends string | number> {
   protected readonly _value: T;

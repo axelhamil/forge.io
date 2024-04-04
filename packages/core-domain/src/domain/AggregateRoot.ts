@@ -1,6 +1,6 @@
-import { DomainEvents, IDomainEvent } from "./DomainEvents";
+import { DomainEvents, type IDomainEvent } from "./DomainEvents";
 import { Entity } from "./Entity";
-import { ID } from "./ID";
+import { type ID } from "./ID";
 
 export abstract class AggregateRoot<T extends object> extends Entity<T> {
   private _domainEvents: IDomainEvent[] = [];

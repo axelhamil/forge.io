@@ -4,7 +4,6 @@ import { ValueObject } from "./ValueObject";
 import { WatchedList } from "./WatchedList";
 
 function isEntity(v: any): boolean {
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   return v instanceof Entity;
 }
 
@@ -74,6 +73,7 @@ export abstract class Entity<T extends object> {
   public clone(props?: T): Entity<T> {
     const clonedProps = { ...this._props, ...props };
     return new (this.constructor as new (
+      // eslint-disable-next-line @typescript-eslint/no-shadow
       props: T,
       id?: ID<string | number>,
     ) => Entity<T>)(clonedProps, this._id);

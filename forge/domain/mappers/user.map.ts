@@ -1,7 +1,6 @@
-import { Email, ID, Mapper, Password } from "@repo/core-domain";
-
-import { UserInsert, UserSelect } from "../../database/schemas";
-import { UserDTO } from "../contracts/users.contract";
+import { Email, ID, type Mapper, Password } from "@repo/core-domain";
+import { type UserInsert, type UserSelect } from "../../database/schemas";
+import { type UserDTO } from "../contracts/users.contract";
 import User from "../entities/user/User";
 
 class UserMap

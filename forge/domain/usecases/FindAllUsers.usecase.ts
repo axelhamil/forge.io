@@ -1,7 +1,6 @@
-import { UseCase } from "@repo/core-domain";
-
-import { UserRepo } from "../contracts/users.contract";
-import User from "../entities/user/User";
+import { type UseCase } from "@repo/core-domain";
+import { type UserRepo } from "../contracts/users.contract";
+import type User from "../entities/user/User";
 
 export default class FindAllUsers implements UseCase<void, User[]> {
   constructor(private userRepo: UserRepo) {}

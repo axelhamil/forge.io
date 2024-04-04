@@ -1,9 +1,8 @@
-import { DomainEvents, IHandle, UseCase } from "@repo/core-domain";
-
+import { DomainEvents, type IHandle, type UseCase } from "@repo/core-domain";
 import UserCreated from "../entities/user/UserCreated.event";
 
 class AfterUserCreatedHandler implements IHandle {
-  private useCase: any;
+  private useCase: UseCase<any, any>;
 
   constructor(useCase: UseCase<any, any>) {
     this.setupSubscriptions();

@@ -1,5 +1,9 @@
-import { AggregateRoot, Email, ID, Password } from "@repo/core-domain";
-
+import {
+  AggregateRoot,
+  type Email,
+  type ID,
+  type Password,
+} from "@repo/core-domain";
 import UserCreated from "./UserCreated.event";
 import UserId from "./UserId";
 

@@ -1,83 +1,63 @@
+const { resolve } = require("node:path");
+
+const project = resolve(process.cwd(), "tsconfig.json");
+
+/*
+ * This is a custom ESLint configuration for use with
+ * Next.js apps.
+ *
+ * This config extends the Vercel Engineering Style Guide.
+ * For more information, see https://github.com/vercel/style-guide
+ *
+ */
+
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-    jest: true,
-  },
   extends: [
-    "eslint:recommended",
-    "plugin:prettier/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "next/core-web-vitals",
-    "turbo",
-  ],
-  ignorePatterns: [
-    ".eslintrc.js",
-    "**/.next/**",
-    "**/build/**",
-    "**/dist/**",
-    "**/node_modules/**",
-  ],
-  overrides: [
-    {
-      env: {
-        node: true,
+    "@vercel/style-guide/eslint/node",
+    "@vercel/style-guide/eslint/typescript",
+    "@vercel/style-guide/eslint/browser",
+    "@vercel/style-guide/eslint/react",
+    "@vercel/style-guide/eslint/next",
+    "eslint-config-turbo",
+  ].map(require.resolve),
+  parserOptions: {
+    project,
+  },
+  globals: {
+    React: true,
+    JSX: true,
+  },
+  settings: {
+    "import/resolver": {
+      typescript: {
+        project,
       },
-      files: [".eslintrc.{js,cjs}"],
-      parserOptions: {
-        sourceType: "script",
+      node: {
+        extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
       },
     },
-  ],
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    ecmaVersion: "latest",
-    project: "./tsconfig.json",
-    sourceType: "module",
   },
-  plugins: ["simple-import-sort", "sort-keys-fix", "unused-imports"],
+  ignorePatterns: ["node_modules/", "dist/"],
+  plugins: ["unused-imports"],
   rules: {
-    "@typescript-eslint/consistent-type-assertions": 1,
-    "@typescript-eslint/explicit-function-return-type": 1,
+    "import/no-default-export": 0,
+    "unicorn/filename-case": 0,
+    "@typescript-eslint/prefer-nullish-coalescing": 0,
+    "@typescript-eslint/no-unnecessary-condition": 0,
+    "@typescript-eslint/naming-convention": 0,
     "@typescript-eslint/no-explicit-any": 1,
-    "@typescript-eslint/no-use-before-define": "warn",
-    "@typescript-eslint/prefer-optional-chain": 1,
-    "comma-spacing": ["error", { after: true, before: false }],
-    eqeqeq: 1,
-    "object-curly-spacing": ["error", "always"],
-    "prettier/prettier": [
-      1,
-      {
-        arrowParens: "always",
-        bracketSpacing: true,
-        doubleQuote: true,
-        endOfLine: "lf",
-        htmlWhitespaceSensitivity: "css",
-        jsxBracketSameLine: false,
-        jsxSingleQuote: false,
-        printWidth: 80,
-        proseWrap: "preserve",
-        quoteProps: "as-needed",
-        semi: true,
-        tabWidth: 2,
-        trailingComma: "all",
-        useTabs: false,
-      },
-    ],
-    "simple-import-sort/exports": 2,
-    "simple-import-sort/imports": 2,
-    "sort-keys": [
-      1,
-      "asc",
-      {
-        caseSensitive: true,
-        minKeys: 2,
-        natural: false,
-      },
-    ],
-    "sort-keys-fix/sort-keys-fix": 1,
+    "@typescript-eslint/no-shadow": 0,
+    "@typescript-eslint/no-base-to-string": 0,
+    "@typescript-eslint/no-floating-promises": 0,
+    "@typescript-eslint/no-misused-promises": 0,
+    "@typescript-eslint/unbound-method": 0,
+    "eslint-comments/require-description": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-cycle": 0,
+    "no-unused-vars": 0,
+    "no-console": 1,
+    "no-new": 1,
+    "import/named": 0,
     "unused-imports/no-unused-imports": 2,
   },
 };

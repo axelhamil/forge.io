@@ -1,9 +1,8 @@
 "use server";
 import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
-
-import { createUserDTOSchema } from "../../domain/contracts/users.contract";
 import { createUserUseCase } from "../../domain/usecases";
+import { createUserDTOSchema } from "../../domain/contracts/users.contract";
 
 export default async function createUserAction(
   formData: FormData,

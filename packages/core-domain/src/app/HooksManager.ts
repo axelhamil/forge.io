@@ -1,15 +1,16 @@
-import { ID } from "../domain/ID";
+import { type ID } from "../domain/ID";
 
 /*
- * Drizzle don't have a hook system, so we created one
+ * Drizzle doesn't have a hook system, so we created one
  * to handle events after a user is created, for example.
  * If your orm has a hook system, you can use it instead.
  * This is a simple implementation.
  */
 export class HooksManager {
-  private static events: {
-    [hook: string]: ((aggregateId: ID<string | number>) => Promise<void>)[];
-  } = {};
+  private static events: Record<
+    string,
+    ((aggregateId: ID<string | number>) => Promise<void>)[]
+  > = {};
 
   static addHook(
     hook: string,

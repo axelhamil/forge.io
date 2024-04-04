@@ -9,7 +9,8 @@
     ]
   },
   "scripts": {
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "zod": "^3.22.4",

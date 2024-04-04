@@ -1,26 +1,25 @@
-import { AggregateRoot } from "./AggregateRoot";
-import { ID } from "./ID";
+import { type AggregateRoot } from "./AggregateRoot";
+import { type ID } from "./ID";
 
 export interface IDomainEvent {
   dateTimeOccurred: Date;
-  getAggregateId(): ID<string | number>;
+  getAggregateId: () => ID<string | number>;
 }
 
 export interface IHandle {
-  setupSubscriptions(): void;
+  setupSubscriptions: () => void;
 }
 
 type EventHandler<T extends IDomainEvent> = (event: T) => Promise<void> | void;
 
-type EventHandlers<T extends IDomainEvent = IDomainEvent> = {
-  [key: string]: EventHandler<T>[];
-};
+type EventHandlers<T extends IDomainEvent = IDomainEvent> = Record<
+  string,
+  EventHandler<T>[]
+>;
 
 export class DomainEvents {
   public static eventHandlers: EventHandlers = {};
   private static markedAggregates: AggregateRoot<any>[] = [];
-
-  constructor() {}
 
   public static subscribe<T extends IDomainEvent>(
     listener: EventHandler<T>,
@@ -65,7 +64,7 @@ export class DomainEvents {
   }
 
   public static registerEvent(aggregate: AggregateRoot<any>): void {
-    const found = !!this.findMarkedAggregateByID(aggregate.id);
+    const found = Boolean(this.findMarkedAggregateByID(aggregate.id));
 
     if (!found) {
       this.markedAggregates.push(aggregate);

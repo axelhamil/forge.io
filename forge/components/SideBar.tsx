@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Navbar,
   NavbarBrand,
@@ -8,12 +7,12 @@ import {
 } from "@nextui-org/navbar";
 import { Link } from "@nextui-org/react";
 import { usePathname } from "next/navigation";
-import { ReactElement } from "react";
+import { type ReactElement } from "react";
 
 function SideBar(): ReactElement {
   const pathname = usePathname();
   return (
-    <aside className={"flex justify-end gap-3"}>
+    <aside className="flex justify-end gap-3">
       <Navbar
         shouldHideOnScroll
         classNames={{

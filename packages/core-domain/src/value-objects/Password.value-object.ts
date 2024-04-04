@@ -1,6 +1,5 @@
 import bcrypt from "bcrypt";
-import { SafeParseError, z } from "zod";
-
+import { type SafeParseError, z } from "zod";
 import { DomainError } from "../app/DomainError";
 import { ValueObject } from "../domain/ValueObject";
 
@@ -19,26 +18,28 @@ export class Password extends ValueObject<IPasswordProps> {
     if (!this.props?.hashed) {
       hashed = this.value;
       return this.bcryptCompare(plainText, hashed);
-    } else {
-      return this.props?.value === plainText;
     }
+    return this.props?.value === plainText;
   }
 
   public async hash(): Promise<string> {
     return new Promise((resolve) => {
       if (this.props?.hashed) {
-        return resolve(this.value);
-      } else {
-        resolve(this.hashPassword(this.value));
+        resolve(this.value);
+        return;
       }
+      resolve(this.hashPassword(this.value));
     });
   }
 
   private hashPassword(password: string): Promise<string> {
     return new Promise((resolve, reject) => {
       bcrypt.hash(password, 10, (err, hash) => {
-        if (err) return reject(err);
-        return resolve(hash);
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve(hash);
       });
     });
   }
@@ -49,13 +50,16 @@ export class Password extends ValueObject<IPasswordProps> {
   ): Promise<boolean> {
     return new Promise((resolve) => {
       bcrypt.compare(passwd, hashedPasswd, (err, result) => {
-        if (err) return resolve(false);
-        return resolve(result);
+        if (err) {
+          resolve(false);
+          return;
+        }
+        resolve(result);
       });
     });
   }
 
-  public static create(password: string, hashed: boolean = false): Password {
+  public static create(password: string, hashed = false): Password {
     return new Password({ hashed, value: password });
   }
 

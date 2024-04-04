@@ -1,5 +1,4 @@
-import { SafeParseError, z } from "zod";
-
+import { type SafeParseError, z } from "zod";
 import { DomainError } from "../app/DomainError";
 import { ValueObject } from "../domain/ValueObject";
 

@@ -1,13 +1,13 @@
-import { ReactElement, Suspense } from "react";
-
-import { UserDTO } from "../../domain/contracts/users.contract";
+import { type ReactElement, Suspense, cache } from "react";
+import { type UserDTO } from "../../domain/contracts/users.contract";
 import UserMap from "../../domain/mappers/user.map";
 import { findAllUsersUseCase } from "../../domain/usecases";
 
-async function getAllUsers(): Promise<UserDTO[]> {
+const getAllUsers = cache(async (): Promise<UserDTO[]> => {
   const result = await findAllUsersUseCase.execute();
+
   return result.map(UserMap.toDTO);
-}
+});
 
 async function Page(): Promise<ReactElement> {
   const users = await getAllUsers();

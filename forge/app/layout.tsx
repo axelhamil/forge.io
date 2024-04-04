@@ -4,8 +4,7 @@ import "../infra/hooks/index";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ReactElement, ReactNode } from "react";
-
+import { type ReactElement, type ReactNode } from "react";
 import SideBar from "../components/SideBar";
 import { Providers } from "./provider";
 
@@ -26,7 +25,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <SideBar />
-          <main className={"pt-10"}>{children}</main>
+          <main className="pt-10">{children}</main>
         </Providers>
       </body>
     </html>

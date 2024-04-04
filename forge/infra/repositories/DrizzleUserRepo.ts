@@ -1,11 +1,10 @@
-import { Email, HooksManager } from "@repo/core-domain";
+import { type Email, HooksManager } from "@repo/core-domain";
 import { eq } from "drizzle-orm";
-
 import db from "../../database";
-import { users, UserSelect } from "../../database/schemas";
+import { users, type UserSelect } from "../../database/schemas";
 import { UserRepo } from "../../domain/contracts/users.contract";
-import User from "../../domain/entities/user/User";
-import UserId from "../../domain/entities/user/UserId";
+import type User from "../../domain/entities/user/User";
+import type UserId from "../../domain/entities/user/UserId";
 import UserMap from "../../domain/mappers/user.map";
 
 export default class DrizzleUserRepo extends UserRepo {
@@ -45,7 +44,8 @@ export default class DrizzleUserRepo extends UserRepo {
       where: (users, { eq }) => {
         if (arg.constructor.name === "Email") {
           return eq(users.email, arg.value);
-        } else return eq(users.id, arg.value);
+        }
+        return eq(users.id, arg.value);
       },
     });
 
