@@ -12,6 +12,16 @@ export abstract class ValueObject<T extends IValueObjectProps> {
     this._value = Object.freeze(this.ensureValidFormat(props));
   }
 
+  public equals(vo?: ValueObject<T>): boolean {
+    if (vo === null || vo === undefined)
+      return false;
+  
+    if (vo.props === undefined)
+      return false;
+
+    return JSON.stringify(this.props) === JSON.stringify(vo.props);
+  }
+
   get value(): T["value"] {
     return this._value;
   }
