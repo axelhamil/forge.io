@@ -4,7 +4,7 @@ const envSchema = z.object({
   DATABASE_POOL_MAX: z.number().default(50),
   DATABASE_URL: z
     .string()
-    .default("postgres://user:password@localhost:5432/postgres"),
+    .default("postgres://user:password@localhost:5432/forge"),
 });
 
 type Env = z.infer<typeof envSchema>;

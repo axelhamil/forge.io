@@ -1,3 +1,4 @@
+import { Logger } from "../utils/Logger";
 import { DomainEvents, type IDomainEvent } from "./DomainEvents";
 import { Entity } from "./Entity";
 import { type ID } from "./ID";
@@ -26,7 +27,7 @@ export abstract class AggregateRoot<T extends object> extends Entity<T> {
   private logDomainEventAdded(domainEvent: IDomainEvent): void {
     const thisClass = Reflect.getPrototypeOf(this);
     const domainEventClass = Reflect.getPrototypeOf(domainEvent);
-    console.info(
+    Logger.info(
       `[Domain Event Created]:`,
       thisClass.constructor.name,
       "==>",

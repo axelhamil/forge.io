@@ -1,4 +1,4 @@
-import { DomainEvents, HooksManager, type ID } from "@repo/core-domain";
+import { DomainEvents, HooksManager, type ID, Logger } from "@repo/core-domain";
 
 (function createHooksForAggregateRoots(): void {
   // USER
@@ -8,5 +8,5 @@ import { DomainEvents, HooksManager, type ID } from "@repo/core-domain";
 
   // OTHER
 
-  console.log("[HOOKS]: DB hooks initialised 🎉");
+  Logger.info("[HOOKS]: DB hooks initialised 🎉");
 })();

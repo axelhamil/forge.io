@@ -1,13 +1,14 @@
-import "./globals.css";
-import "../domain/handlers/index";
-import "../infra/config/db/hooks";
+import "./global.css";
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import { type ReactElement, type ReactNode } from "react";
-import { NUIProvider } from "../_providers/NUIProvider";
+import { Provider } from "~/app/Provider";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = Roboto({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   description: "Forge is a fullstack monorepo template for Next.js",
@@ -21,10 +22,8 @@ export default function RootLayout({
 }): ReactElement {
   return (
     <html lang="en" className="dark">
-      <body className={inter.className}>
-        <NUIProvider>
-          <main>{children}</main>
-        </NUIProvider>
+      <body className={font.className}>
+        <Provider>{children}</Provider>
       </body>
     </html>
   );

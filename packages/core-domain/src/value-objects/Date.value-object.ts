@@ -1,5 +1,4 @@
 import { type SafeParseError, z } from "zod";
-import { DomainError } from "../app/DomainError";
 import { ValueObject } from "../domain/ValueObject";
 
 interface IDateValueProps {
@@ -27,7 +26,7 @@ export class DateValue extends ValueObject<IDateValueProps> {
     const zodResult = zodSchema.safeParse(value);
 
     if (!zodResult.success)
-      throw new DomainError(
+      throw new Error(
         (zodResult as SafeParseError<IDateValueProps>).error.message,
       );
 

@@ -1,6 +1,5 @@
-import bcrypt from "bcrypt";
+import { hash, compare } from "bcrypt";
 import { type SafeParseError, z } from "zod";
-import { DomainError } from "../app/DomainError";
 import { ValueObject } from "../domain/ValueObject";
 
 interface IPasswordProps {
@@ -34,12 +33,12 @@ export class Password extends ValueObject<IPasswordProps> {
 
   private hashPassword(password: string): Promise<string> {
     return new Promise((resolve, reject) => {
-      bcrypt.hash(password, 10, (err, hash) => {
+      hash(password, 10, (err, hashed) => {
         if (err) {
           reject(err);
           return;
         }
-        resolve(hash);
+        resolve(hashed);
       });
     });
   }
@@ -49,7 +48,7 @@ export class Password extends ValueObject<IPasswordProps> {
     hashedPasswd: string,
   ): Promise<boolean> {
     return new Promise((resolve) => {
-      bcrypt.compare(passwd, hashedPasswd, (err, result) => {
+      compare(passwd, hashedPasswd, (err, result) => {
         if (err) {
           resolve(false);
           return;
@@ -71,7 +70,7 @@ export class Password extends ValueObject<IPasswordProps> {
     const zodResult = zodSchema.safeParse(value);
 
     if (!zodResult.success)
-      throw new DomainError(
+      throw new Error(
         (zodResult as SafeParseError<IPasswordProps["value"]>).error.message,
       );
 

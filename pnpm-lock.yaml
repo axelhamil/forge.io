@@ -130,6 +130,9 @@ importers:
       eslint-config-turbo:
         specifier: ^1.13.2
         version: 1.13.2(eslint@8.57.0)
+      eslint-import-resolver-typescript:
+        specifier: ^3.6.1
+        version: 3.6.1(@typescript-eslint/parser@7.5.0)(eslint-plugin-import@2.29.1)(eslint@8.57.0)
       eslint-plugin-unused-imports:
         specifier: ^3.1.0
         version: 3.1.0(eslint@8.57.0)

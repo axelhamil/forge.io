@@ -1,5 +1,4 @@
 import { type SafeParseError, z } from "zod";
-import { DomainError } from "../app/DomainError";
 import { ValueObject } from "../domain/ValueObject";
 
 interface IStringValueProps {
@@ -17,15 +16,20 @@ export class StringValue extends ValueObject<IStringValueProps> {
 
   protected ensureValidFormat(
     value: IStringValueProps,
+    min?: number,
+    max?: number,
   ): IStringValueProps["value"] {
     const zodSchema = z.object({
-      value: z.string(),
+      value: z
+        .string()
+        .min(min ?? 0)
+        .max(max ?? Infinity),
     });
 
     const zodResult = zodSchema.safeParse(value);
 
     if (!zodResult.success)
-      throw new DomainError(
+      throw new Error(
         (zodResult as SafeParseError<IStringValueProps>).error.message,
       );
 

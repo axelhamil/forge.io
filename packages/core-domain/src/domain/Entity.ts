@@ -1,4 +1,3 @@
-import { DomainError } from "../app/DomainError";
 import { ID } from "./ID";
 import { ValueObject } from "./ValueObject";
 import { WatchedList } from "./WatchedList";
@@ -31,18 +30,17 @@ export abstract class Entity<T extends object> {
     if (prop === null) return null;
 
     if (!prop)
-      throw new DomainError(
+      throw new Error(
         `The property ${String(key)} doesn't exist in ${this.constructor.name}`,
       );
 
     return prop;
   }
   set<Key extends keyof T>(key: Key, value: T[Key]): void {
-    if (key === "id")
-      throw new DomainError("Cannot change the ID of an entity.");
+    if (key === "id") throw new Error("Cannot change the ID of an entity.");
 
     if (!(key in this._props))
-      throw new DomainError(
+      throw new Error(
         `The property ${String(key)} doesn't exist in ${this.constructor.name}`,
       );
 

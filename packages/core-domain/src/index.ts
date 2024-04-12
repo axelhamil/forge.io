@@ -1,9 +1,6 @@
 // Core App
-export * from "./app/DomainError";
 export * from "./app/HooksManager";
-export * from "./app/Mapper";
 export * from "./app/UseCase";
-export * from "./app/UseCaseError";
 
 // Core Domain
 export * from "./domain/AggregateRoot";
@@ -20,3 +17,6 @@ export * from "./value-objects/Link.value-object";
 export * from "./value-objects/Number.value-object";
 export * from "./value-objects/Password.value-object";
 export * from "./value-objects/String.value-object";
+
+// Utils
+export * from "./utils/Logger";

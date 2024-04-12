@@ -1,5 +1,4 @@
 import { type SafeParseError, z } from "zod";
-import { DomainError } from "../app/DomainError";
 import { ValueObject } from "../domain/ValueObject";
 
 interface IEmailProps {
@@ -25,9 +24,7 @@ export class Email extends ValueObject<IEmailProps> {
     const zodResult = zodSchema.safeParse(value);
 
     if (!zodResult.success)
-      throw new DomainError(
-        (zodResult as SafeParseError<IEmailProps>).error.message,
-      );
+      throw new Error((zodResult as SafeParseError<IEmailProps>).error.message);
 
     return zodResult.data.value;
   }

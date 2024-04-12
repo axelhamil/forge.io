@@ -1,8 +1,9 @@
 import { drizzle, type NodePgDatabase } from "drizzle-orm/node-postgres";
 import { migrate } from "drizzle-orm/node-postgres/migrator";
 import { Client } from "pg";
+import { Logger } from "@repo/core-domain";
+import env from "~/utils/env";
 import * as schema from "../infra/config/db/schemas";
-import env from "../utils/env";
 
 const client = new Client({
   connectionString: env.DATABASE_URL,
@@ -18,8 +19,6 @@ async function getDb(): Promise<NodePgDatabase<typeof schema>> {
     migrationsFolder: "./infra/config/db/migrations",
   });
 
-  // plus court
-  console.log("[DB]: Migrations done 🚀");
-
+  Logger.info("[DB]: Migrations done 🚀");
   process.exit(0);
 })();
