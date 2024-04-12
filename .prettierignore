@@ -36,7 +36,7 @@ web_modules/
 .env.development.local
 .env.test.local
 .env.production.local
-.env.local
+forge/saas/.env.local
 .cache
 .parcel-cache
 .next
@@ -74,6 +74,6 @@ sketch
 /build
 .DS_Store
 *.pem
-.env*.local
+forge/saas/.env.local
 .vercel
-next-env.d.ts
+forge/saas/next-env.d.ts

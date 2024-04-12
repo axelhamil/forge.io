@@ -9,9 +9,9 @@ FROM base AS pruner
 
 WORKDIR /app
 
-COPY . .
+COPY .. .
 
-RUN turbo prune --scope=forge --docker
+RUN turbo prune --scope=saas --docker
 
 FROM base AS builder
 
@@ -25,7 +25,7 @@ RUN --mount=type=cache,id=pnpm,target=~/.pnpm-store pnpm install --frozen-lockfi
 
 COPY --from=pruner /app/out/full/ .
 
-RUN turbo build --scope=forge...
+RUN turbo build --scope=saas...
 
 RUN pnpm prune --prod --no-optional
 #RUN rm -rf ./**/*/src
@@ -40,10 +40,10 @@ WORKDIR /app
 
 COPY --from=builder --chown=nodejs:nodejs /app .
 
-COPY --chown=nodejs:nodejs /apps/forge/docker-entrypoint.sh /usr/local/bin/
+COPY --chown=nodejs:nodejs /apps/saas/docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-WORKDIR /app/apps/forge
+WORKDIR /app/apps/saas
 
 ARG PORT=3030
 ARG NODE_ENV=production

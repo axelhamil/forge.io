@@ -1,5 +1,8 @@
 import { Email, ID, type Mapper, Password } from "@repo/core-domain";
-import { type UserInsert, type UserSelect } from "../../database/schemas";
+import {
+  type UserInsert,
+  type UserSelect,
+} from "../../infra/config/db/schemas";
 import { type UserDTO } from "../contracts/users.contract";
 import User from "../entities/user/User";
 

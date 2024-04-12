@@ -1,5 +1,5 @@
 {
-  "name": "forge",
+  "name": "saas",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "lint": "eslint . --fix",
     "format": "prettier --write .",
     "migrate": "pnpx tsx --tsconfig ./tsconfig.json scripts/migrate.ts",
-    "generate:migration": "drizzle-kit generate:pg",
+    "make:migration": "drizzle-kit generate:pg",
     "studio": "drizzle-kit studio --port 3030"
   },
   "dependencies": {
@@ -17,7 +17,6 @@
     "@repo/core-domain": "workspace:*",
     "bcrypt": "^5.1.1",
     "clsx": "^2.1.0",
-    "drizzle-kit": "^0.20.14",
     "drizzle-orm": "^0.30.7",
     "framer-motion": "^11.0.24",
     "next": "^14.1.4",
@@ -36,6 +35,7 @@
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.23",
     "autoprefixer": "^10.4.19",
+    "drizzle-kit": "^0.20.14",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.3.3"

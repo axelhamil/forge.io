@@ -1,12 +1,11 @@
 import "./globals.css";
 import "../domain/handlers/index";
-import "../infra/hooks/index";
+import "../infra/config/db/hooks";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { type ReactElement, type ReactNode } from "react";
-import SideBar from "../components/SideBar";
-import { Providers } from "./provider";
+import { NUIProvider } from "../_providers/NUIProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,10 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={inter.className}>
-        <Providers>
-          <SideBar />
-          <main className="pt-10">{children}</main>
-        </Providers>
+        <NUIProvider>
+          <main>{children}</main>
+        </NUIProvider>
       </body>
     </html>
   );
