@@ -17,6 +17,7 @@ export default function InputPassword(): ReactElement {
       label="Password"
       placeholder="mysecretpassword1234"
       labelPlacement="outside"
+      radius="sm"
       endContent={
         <button
           className="focus:outline-none"

@@ -1,5 +1,5 @@
 "use client";
-import React, { type ReactElement } from "react";
+import { memo, type ReactElement } from "react";
 import { motion } from "framer-motion";
 import { cn } from "~/utils/cn";
 
@@ -21,8 +21,10 @@ export function BackgroundBoxesCore({
     "--blue-300",
     "--indigo-300",
     "--violet-300",
+    "--cyan-300",
+    "--teal-300",
   ];
-  const getRandomColor = () => {
+  const getRandomColor = (): string => {
     return colors[Math.floor(Math.random() * colors.length)];
   };
 
@@ -32,7 +34,7 @@ export function BackgroundBoxesCore({
         transform: `translate(-40%,-60%) skewX(-48deg) skewY(14deg) scale(0.675) rotate(0deg) translateZ(0)`,
       }}
       className={cn(
-        "absolute left-1/4 p-4 -top-1/4 flex  -translate-x-1/2 -translate-y-1/2 w-full h-full z-0 ",
+        "absolute left-1/4 p-4 -top-1/4 flex -translate-x-1/2 -translate-y-1/2 w-full h-full z-0 ",
         className,
       )}
       {...rest}
@@ -40,7 +42,7 @@ export function BackgroundBoxesCore({
       {rows.map((_, i) => (
         <motion.div
           key={`row${i.toString()}`}
-          className="w-16 h-8  border-l  border-slate-700 relative"
+          className="w-16 h-8  border-l border-slate-700 relative"
         >
           {cols.map((_, j) => (
             <motion.div
@@ -52,7 +54,7 @@ export function BackgroundBoxesCore({
                 transition: { duration: 2 },
               }}
               key={`col${j.toString()}`}
-              className="w-16 h-8  border-r border-t border-slate-700 relative"
+              className="w-16 h-8 border-r border-t border-slate-700 relative"
             >
               {j % 2 === 0 && i % 2 === 0 ? (
                 <svg
@@ -78,4 +80,4 @@ export function BackgroundBoxesCore({
   );
 }
 
-export const Boxes = React.memo(BackgroundBoxesCore);
+export const Boxes = memo(BackgroundBoxesCore);

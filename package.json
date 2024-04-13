@@ -5,6 +5,7 @@
     "start:db": "docker-compose up db -d",
     "build": "turbo build",
     "dev": "pnpm start:db && turbo dev",
+    "start": "pnpm start:db && turbo start",
     "lint": "turbo lint",
     "format": "turbo format",
     "clean": "turbo clean"

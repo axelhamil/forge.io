@@ -1,69 +1,69 @@
 import { type ReactElement } from "react";
-import { Button, Input } from "@nextui-org/react";
-import { Link } from "@nextui-org/link";
+import { Button, Input, Link } from "@nextui-org/react";
 import { cn } from "~/utils/cn";
 import { BackgroundBoxesContainer, Container } from "~/components/Container";
 import InputPassword from "~/components/input/InputPassword";
+import { H1, H2, H3, H5, H6 } from "~/components/Heading";
 
 export default function Page(): ReactElement {
   return (
     <div className="flex">
-      <BackgroundBoxesContainer className="md:h-screen md:w-1/2 md:flex hidden">
-        <div className="relative z-20">
-          <h3 className={cn("text-xl font-medium text-white")}>Forge.io</h3>
-        </div>
-        <div className="flex flex-col gap-5 relative w-fit z-20">
-          <h1 className={cn("text-5xl font-semibold text-white")}>
-            Sign In to
-          </h1>
-          <h2 className={cn("text-3xl font-light text-white")}>
-            Forge.io, the only NextJS SaaS Starter
-          </h2>
-        </div>
-        <div className="relative z-20">
-          <h6 className={cn("text-xs font-light text-white/50")}>
-            ©2024 Forge.io All rights reserved. <br />
-          </h6>
-        </div>
-      </BackgroundBoxesContainer>
-      <Container
+      <BackgroundBoxesContainer
         className={cn(
-          "h-screen md:w-1/2 w-full flex flex-col",
-          "justify-center items-center px-0 bg-slate-950",
+          "md:h-screen md:w-1/2 md:flex hidden [&>div]:justify-between",
         )}
       >
-        <div className="flex flex-col gap-16 w-7/12">
-          <h2 className={cn("text-4xl font-medium text-foreground")}>
-            Hi, Welcome Back! 👋
-          </h2>
-          <form className="flex flex-col gap-5">
-            <Input
-              size="md"
-              type="email"
-              label="Email"
-              placeholder="john@doe.com"
-              labelPlacement="outside"
-            />
-            <InputPassword />
-            <Link
-              color="primary"
-              underline="none"
-              href="#"
-              className={cn("text-sm font-light self-end")}
-            >
-              Forgot password?
-            </Link>
-
-            <Button
-              type="submit"
-              color="primary"
-              size="lg"
-              className="uppercase text-lg medium"
-            >
-              Sign in
-            </Button>
-          </form>
+        <Link href="/" size="lg" className="relative z-30 hover:cursor-pointer">
+          <H5 className="text-white">Forge.io</H5>
+        </Link>
+        <div className="flex flex-col gap-5 relative w-fit z-20">
+          <H1 className="text-white">Sign In to</H1>
+          <H3 className="text-white">Forge.io - Your NextJS SaaS Starter</H3>
         </div>
+        <H6 className="relative z-20 text-white/50">
+          ©2024 Forge.io. All rights reserved. <br /> Powered by Forge.io 🔥
+          The ultimate SaaS boilerplate.
+        </H6>
+      </BackgroundBoxesContainer>
+
+      <Container
+        className={cn(
+          "md:w-1/2 w-full h-screen gap-10",
+          "flex flex-col justify-center items-center",
+          "dark:bg-slate-950 light:bg-background",
+        )}
+      >
+        <form className="flex flex-col gap-10 md:w-1/2 w-3/4">
+          <H2>Hi, Welcome Back! 🚀️</H2>
+          <Input
+            size="md"
+            type="email"
+            label="Email"
+            placeholder="john@doe.com"
+            labelPlacement="outside"
+            radius="sm"
+          />
+          <InputPassword />
+          <Link
+            color="primary"
+            underline="none"
+            href="#"
+            size="sm"
+            className={cn("font-light self-end")}
+          >
+            Forgot password?
+          </Link>
+
+          <Button
+            type="submit"
+            color="success"
+            variant="ghost"
+            size="lg"
+            radius="sm"
+          >
+            Sign In
+          </Button>
+        </form>
       </Container>
     </div>
   );
