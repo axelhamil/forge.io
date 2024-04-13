@@ -1,12 +1,11 @@
 import "./global.css";
 
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
 import { type ReactElement, type ReactNode } from "react";
-import { Provider } from "~/app/Provider";
+import { Inter } from "next/font/google";
+import { Providers } from "~/app/providers";
 
-const font = Roboto({
-  weight: "400",
+const inter = Inter({
   subsets: ["latin"],
 });
 
@@ -22,8 +21,10 @@ export default function RootLayout({
 }): ReactElement {
   return (
     <html lang="en" className="dark">
-      <body className={font.className}>
-        <Provider>{children}</Provider>
+      <body className={inter.className}>
+        <main>
+          <Providers>{children}</Providers>
+        </main>
       </body>
     </html>
   );

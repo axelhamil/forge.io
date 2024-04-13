@@ -51,6 +51,7 @@ module.exports = {
     "@typescript-eslint/no-floating-promises": 0,
     "@typescript-eslint/no-misused-promises": 0,
     "@typescript-eslint/unbound-method": 0,
+    "react/no-unstable-nested-components": 0,
     "eslint-comments/require-description": 0,
     "import/no-extraneous-dependencies": 0,
     "import/no-cycle": 0,

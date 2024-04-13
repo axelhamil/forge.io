@@ -27,9 +27,9 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^14.1.4",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@next/eslint-plugin-next": "^14.1.4",
     "@types/node": "^20.12.3",
     "@types/pg": "^8.11.4",
     "@types/react": "^18.2.74",
