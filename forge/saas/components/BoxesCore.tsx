@@ -3,7 +3,7 @@ import { memo, type ReactElement } from "react";
 import { motion } from "framer-motion";
 import { cn } from "~/utils/cn";
 
-export function BackgroundBoxesCore({
+export function BoxesCore({
   className,
   ...rest
 }: {
@@ -80,4 +80,4 @@ export function BackgroundBoxesCore({
   );
 }
 
-export const Boxes = memo(BackgroundBoxesCore);
+export const Boxes = memo(BoxesCore);

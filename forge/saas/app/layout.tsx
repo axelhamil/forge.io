@@ -20,7 +20,7 @@ export default function RootLayout({
   children: ReactNode;
 }): ReactElement {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <main>
           <Providers>{children}</Providers>
