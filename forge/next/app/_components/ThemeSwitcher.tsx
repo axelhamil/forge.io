@@ -2,8 +2,8 @@
 import { type ReactElement, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Switch } from "@nextui-org/Switch";
-import { MoonIcon } from "~/components/icons/MoonIcon";
-import { SunIcon } from "~/components/icons/SunIcon";
+import { MoonIcon } from "~/app/_components/icons/MoonIcon";
+import { SunIcon } from "~/app/_components/icons/SunIcon";
 import { cn } from "~/utils/cn";
 
 interface IThemeSwitcherProps {

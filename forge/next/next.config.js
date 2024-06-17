@@ -1,5 +1,5 @@
 module.exports = {
-  transpilePackages: ["@repo/core-domain"],
+  transpilePackages: ["@repo/core-_domain"],
   webpack: (config) => {
     config.externals = [...config.externals, "bcrypt"];
     return config;

@@ -22,30 +22,26 @@ services:
     ports:
       - "5432:5432"
 
-  saas:
+  next:
     init: true
     tty: true
     networks:
       - default
     build:
       context: .
-      dockerfile: forge/saas/Dockerfile
+      dockerfile: forge/next/Dockerfile
       target: dev
       args:
         NODE_ENV: development
         PORT: 3000
     env_file:
-      - forge/saas/.env.local
-    image: forge-saas:development
-    container_name: forge-saas-development
+      - forge/next/.env
+    image: forge-next:development
+    container_name: forge-next-development
     ports:
       - "3000:3000"
-    environment:
-      - HOST=0.0.0.0
-      - NODE_ENV=development
-      - DATABASE_URL=postgres://user:password@db:5432/postgres
     volumes:
-      - ./forge/saas:/app/forge/saas
+      - ./forge/next:/app/forge/next
       - /app/forge/node_modules
       - /app/node_modules
     depends_on:

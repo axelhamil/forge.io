@@ -1,5 +1,5 @@
 import { type ReactElement } from "react";
-import ThemeSwitcher from "~/components/ThemeSwitcher";
+import ThemeSwitcher from "~/app/_components/ThemeSwitcher";
 
 export default function Layout({ children }): ReactElement {
   return (

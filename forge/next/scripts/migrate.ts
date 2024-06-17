@@ -3,7 +3,7 @@ import { migrate } from "drizzle-orm/node-postgres/migrator";
 import { Client } from "pg";
 import { Logger } from "@repo/core-domain";
 import env from "~/utils/env";
-import * as schema from "../infra/config/db/schemas";
+import * as schema from "~/config/db/schemas";
 
 const client = new Client({
   connectionString: env.DATABASE_URL,
@@ -16,7 +16,7 @@ async function getDb(): Promise<NodePgDatabase<typeof schema>> {
 
 (async (): Promise<void> => {
   await migrate(await getDb(), {
-    migrationsFolder: "./infra/config/db/migrations",
+    migrationsFolder: "./config/db/migrations",
   });
 
   Logger.info("[DB]: Migrations done 🚀");

@@ -4,7 +4,7 @@
   "scripts": {
     "start:db": "docker-compose up db -d",
     "build": "turbo build",
-    "dev": "pnpm start:db && turbo dev",
+    "dev": "docker-compose up --force-recreate -V --build",
     "start": "pnpm start:db && turbo start",
     "lint": "turbo lint",
     "format": "turbo format",
@@ -18,7 +18,7 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "eslint": "^8.57.0",
-    "prettier": "^3.2.5",
-    "turbo": "latest"
+    "prettier": "^3.3.2",
+    "turbo": "^1.13.4"
   }
 }

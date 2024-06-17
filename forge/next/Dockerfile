@@ -2,7 +2,7 @@ FROM node:20.11.1-alpine AS base
 
 RUN apk update \
     && apk add --no-cache libc6-compat \
-    && npm install pnpm turbo --global \
+    && npm install pnpm@8.15.6 turbo@1.13.4 --global \
     && pnpm config set store-dir ~/.pnpm-store
 
 FROM base AS pruner
@@ -11,7 +11,7 @@ WORKDIR /app
 
 COPY .. .
 
-RUN turbo prune --scope=saas --docker
+RUN turbo prune --scope=next --docker
 
 FROM base AS builder
 
@@ -25,7 +25,7 @@ RUN --mount=type=cache,id=pnpm,target=~/.pnpm-store pnpm install --frozen-lockfi
 
 COPY --from=pruner /app/out/full/ .
 
-RUN turbo build --scope=saas...
+RUN turbo build --scope=next...
 
 RUN pnpm prune --prod --no-optional
 #RUN rm -rf ./**/*/src

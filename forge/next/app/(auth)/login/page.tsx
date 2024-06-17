@@ -1,8 +1,8 @@
 import { type ReactElement } from "react";
 import { Button, Input, Link } from "@nextui-org/react";
 import { cn } from "~/utils/cn";
-import { BackgroundBoxesContainer } from "~/components/BackgroundBoxesContainer";
-import InputPassword from "~/components/input/InputPassword";
+import { BackgroundBoxesContainer } from "~/app/_components/BackgroundBoxesContainer";
+import InputPassword from "~/app/_components/input/InputPassword";
 
 export default function Page(): ReactElement {
   return (

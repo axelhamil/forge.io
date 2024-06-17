@@ -1,6 +1,6 @@
 import { type ReactElement, type ReactNode } from "react";
 import { cn } from "~/utils/cn";
-import { BoxesCore } from "~/components/BoxesCore";
+import { BoxesCore } from "~/app/_components/BoxesCore";
 
 interface IBackgroundBoxesContainerProps {
   children?: ReactNode;
