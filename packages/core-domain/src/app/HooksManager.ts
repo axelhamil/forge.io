@@ -1,4 +1,5 @@
 import { type ID } from "../domain/ID";
+import { DomainEvents } from "../domain/DomainEvents";
 
 /*
  * Drizzle doesn't have a hook system, so we created one
@@ -12,14 +13,13 @@ export class HooksManager {
     ((aggregateId: ID<string | number>) => Promise<void>)[]
   > = {};
 
-  static addHook(
-    hook: string,
-    hookFunction: (aggregateId: ID<string | number>) => Promise<void>,
-  ): void {
+  static addHook(hook: string): void {
     if (!this.events[hook]) {
       this.events[hook] = [];
     }
-    this.events[hook].push(hookFunction);
+    this.events[hook].push(async (id: ID<string | number>) =>
+      DomainEvents.dispatch(id),
+    );
   }
 
   static async processHooks(

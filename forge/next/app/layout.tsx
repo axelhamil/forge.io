@@ -1,4 +1,5 @@
 import "./global.css";
+import "~/config/db/hooks";
 
 import type { Metadata } from "next";
 import { type ReactElement, type ReactNode } from "react";
@@ -22,9 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <main>
-          <Providers>{children}</Providers>
-        </main>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

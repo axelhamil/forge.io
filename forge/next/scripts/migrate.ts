@@ -20,5 +20,6 @@ async function getDb(): Promise<NodePgDatabase<typeof schema>> {
   });
 
   Logger.info("[DB]: Migrations done 🚀");
+  await import("../config/db/hooks");
   process.exit(0);
 })();

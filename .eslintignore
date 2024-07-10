@@ -32,11 +32,11 @@ web_modules/
 .node_repl_history
 *.tgz
 .yarn-integrity
-.env
+forge/next/.env.local
 .env.development.local
 .env.test.local
 .env.production.local
-forge/next/.env
+forge/next/.env.local
 .cache
 .parcel-cache
 .next
@@ -74,6 +74,6 @@ sketch
 /build
 .DS_Store
 *.pem
-forge/next/.env
+forge/next/.env.local
 .vercel
 forge/next/next-env.d.ts

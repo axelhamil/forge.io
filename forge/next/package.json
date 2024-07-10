@@ -13,33 +13,31 @@
     "studio": "drizzle-kit studio --port 3030"
   },
   "dependencies": {
-    "@nextui-org/react": "^2.2.10",
     "@repo/core-domain": "workspace:*",
     "bcrypt": "^5.1.1",
-    "clsx": "^2.1.0",
-    "drizzle-orm": "^0.30.7",
+    "clsx": "^2.1.1",
+    "drizzle-orm": "^0.32.0",
     "dotenv": "^16.4.5",
-    "framer-motion": "^11.0.24",
+    "framer-motion": "^11.3.0",
     "next": "^14.1.4",
-    "next-themes": "^0.3.0",
-    "pg": "^8.11.5",
+    "pg": "^8.12.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwind-merge": "^2.2.2",
-    "zod": "^3.22.4"
+    "tailwind-merge": "^2.4.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^14.1.4",
+    "@next/eslint-plugin-next": "^14.2.5",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@types/node": "^20.12.3",
-    "@types/pg": "^8.11.4",
+    "@types/node": "^20.14.10",
+    "@types/pg": "^8.11.6",
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.23",
     "autoprefixer": "^10.4.19",
-    "drizzle-kit": "^0.20.14",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.3.3"
+    "drizzle-kit": "^0.23.0",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.3"
   }
 }

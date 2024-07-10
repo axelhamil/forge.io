@@ -1,15 +1,15 @@
-FROM node:20.11.1-alpine AS base
+FROM node:20.15.1-alpine AS base
 
 RUN apk update \
     && apk add --no-cache libc6-compat \
-    && npm install pnpm@8.15.6 turbo@1.13.4 --global \
+    && npm install pnpm@9.5.0 turbo@1.13.4 --global \
     && pnpm config set store-dir ~/.pnpm-store
 
 FROM base AS pruner
 
 WORKDIR /app
 
-COPY .. .
+COPY . .
 
 RUN turbo prune --scope=next --docker
 

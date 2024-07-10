@@ -1,15 +1,12 @@
-import { nextui } from "@nextui-org/react";
 import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
 
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./_components/**/*.{js,ts,jsx,tsx}",
-    "../../node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: "class",
-  plugins: [nextui(), addVariablesForColors],
+  plugins: [addVariablesForColors],
   theme: {
     extend: {},
   },
