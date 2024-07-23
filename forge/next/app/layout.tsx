@@ -1,4 +1,4 @@
-import "./global.css";
+import "@repo/ui/globals.css";
 import "~/config/db/hooks";
 
 import type { Metadata } from "next";
@@ -21,7 +21,7 @@ export default function RootLayout({
   children: ReactNode;
 }): ReactElement {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className={inter.className}>
         <Providers>{children}</Providers>
       </body>

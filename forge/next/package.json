@@ -13,9 +13,9 @@
     "studio": "drizzle-kit studio --port 3030"
   },
   "dependencies": {
+    "@repo/ui": "workspace:*",
     "@repo/core-domain": "workspace:*",
     "bcrypt": "^5.1.1",
-    "clsx": "^2.1.1",
     "drizzle-orm": "^0.32.0",
     "dotenv": "^16.4.5",
     "framer-motion": "^11.3.0",
@@ -23,7 +23,6 @@
     "pg": "^8.12.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwind-merge": "^2.4.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

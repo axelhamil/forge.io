@@ -8,7 +8,8 @@
     "start": "pnpm start:db && turbo start",
     "lint": "turbo lint",
     "format": "turbo format",
-    "clean": "turbo clean"
+    "clean": "turbo clean",
+    "ui:add": "pnpm --filter @repo/ui ui:add"
   },
   "packageManager": "pnpm@9.5.0",
   "engines": {
