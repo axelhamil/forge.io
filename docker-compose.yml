@@ -32,8 +32,11 @@ services:
       args:
         NODE_ENV: development
         PORT: 3000
-    env_file:
-      - forge/next/.env.local
+        DATABASE_URL: postgres://user:password@db:5432/forge
+    environment:
+        - NODE_ENV=development
+        - PORT=3000
+        - DATABASE_URL=postgres://user:password@db:5432/forge
     image: forge-next:development
     container_name: forge-next-development
     ports:

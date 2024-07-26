@@ -4,7 +4,8 @@
   "scripts": {
     "start:db": "docker-compose up db -d",
     "build": "turbo build",
-    "dev": "docker-compose up --force-recreate -V --build",
+    "dev": "pnpm start:db && turbo dev",
+    "dev:docker": "docker-compose up --force-recreate -V --build",
     "start": "pnpm start:db && turbo start",
     "lint": "turbo lint",
     "format": "turbo format",

@@ -10,7 +10,9 @@ const client = new Client({
 });
 
 async function getDb(): Promise<NodePgDatabase<typeof schema>> {
-  await client.connect();
+  await client.connect().then(() => {
+    Logger.info("[DB]: Connected");
+  });
   return drizzle(client, { schema });
 }
 
@@ -18,8 +20,8 @@ async function getDb(): Promise<NodePgDatabase<typeof schema>> {
   await migrate(await getDb(), {
     migrationsFolder: "./config/db/migrations",
   });
-
   Logger.info("[DB]: Migrations done 🚀");
   await import("../config/db/hooks");
+  await client.end();
   process.exit(0);
 })();

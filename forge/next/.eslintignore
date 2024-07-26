@@ -32,7 +32,7 @@ web_modules/
 .node_repl_history
 *.tgz
 .yarn-integrity
-.env.local
+.env
 .env.development.local
 .env.test.local
 .env.production.local
